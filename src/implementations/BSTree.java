@@ -6,6 +6,7 @@ import utilities.BSTreeADT;
 import utilities.Iterator;
 
 public class BSTree<E extends Comparable<? super E>> implements BSTreeADT<E> {
+    private static final long serialVersionUID = 1L;
 
     private BSTreeNode<E> root;
     private int size;
