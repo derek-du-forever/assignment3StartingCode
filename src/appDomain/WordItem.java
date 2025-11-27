@@ -1,16 +1,17 @@
 package appDomain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeSet;
 
-public class WordItem implements Comparable<WordItem> {
+public class WordItem implements Comparable<WordItem>, java.io.Serializable {
+    private static final long serialVersionUID = 1L;
     private String word;
-    private HashMap<String, ArrayList<Integer>> wordOccurrences;
+    private HashMap<String, TreeSet<Integer>> wordOccurrences;
 
     public WordItem(String word, String fileName, Integer lineNumber) {
         this.word = word;
         this.wordOccurrences = new HashMap<>();
-        ArrayList<Integer> lines = new ArrayList<>();
+        TreeSet<Integer> lines = new TreeSet<>();
         lines.add(lineNumber);
         this.wordOccurrences.put(fileName, lines);
     }
@@ -19,11 +20,15 @@ public class WordItem implements Comparable<WordItem> {
         return word;
     }
 
+    public HashMap<String, TreeSet<Integer>> getWordOccurrences() {
+        return wordOccurrences;
+    }
+
     public WordItem occursInFile(String fileName, Integer lineNumber) {
         if (wordOccurrences.containsKey(fileName)) {
             wordOccurrences.get(fileName).add(lineNumber);
         } else {
-            ArrayList<Integer> lines = new ArrayList<>();
+            TreeSet<Integer> lines = new TreeSet<>();
             lines.add(lineNumber);
             wordOccurrences.put(fileName, lines);
         }
@@ -32,12 +37,12 @@ public class WordItem implements Comparable<WordItem> {
 
     @Override
     public int compareTo(WordItem o) {
-        return this.word.compareTo(o.getWord());
+        return this.word.toLowerCase().compareTo(o.getWord().toLowerCase());
     }
 
     public int getTotalOccurrences() {
         int total = 0;
-        for (ArrayList<Integer> lines : wordOccurrences.values()) {
+        for (TreeSet<Integer> lines : wordOccurrences.values()) {
             total += lines.size();
         }
         return total;

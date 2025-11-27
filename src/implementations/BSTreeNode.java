@@ -1,6 +1,7 @@
 package implementations;
 
-public class BSTreeNode<E> {
+public class BSTreeNode<E> implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
     E element;
     BSTreeNode<E> left;
     BSTreeNode<E> right;

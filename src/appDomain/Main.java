@@ -1,7 +1,18 @@
 package appDomain;
 
+import java.io.BufferedWriter;
+import java.io.Console;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import implementations.FileAndLineWorkItemPrinter;
+import implementations.FileWordItemPrinter;
+import implementations.OccurrenceWordItemPrinter;
+import utilities.FileHelper;
+import utilities.Iterator;
+import utilities.WordItemPrinter;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,9 +24,30 @@ public class Main {
         MainInput input = parseArgs(fixedArgs);
 
         tracker.addWordsFromFile(input.getInputFilePath());
-
         // Serialize the word tree to save the state
         tracker.serializeWordTree();
+
+        Iterator<WordItem> wordTrackerIterator = tracker.iterator();
+        WordItemPrinter printer = input.getPrinter();
+
+        if (input.getOutputFilePath() != null) {
+            try (BufferedWriter writer = new BufferedWriter(
+                    new FileWriter(input.getOutputFilePath(), false))) {
+                while (wordTrackerIterator.hasNext()) {
+                    WordItem item = wordTrackerIterator.next();
+                    writer.write(printer.format(item));
+                    System.out.print(printer.format(item));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            while (wordTrackerIterator.hasNext()) {
+                WordItem item = wordTrackerIterator.next();
+                System.out.print(printer.format(item));
+            }
+        }
+
     }
 
     public static String[] fixArgs(String[] args) {
@@ -40,7 +72,20 @@ public class Main {
             String prefix = args[i].substring(0, 2);
             switch (prefix) {
                 case "-p":
-                    mainInput.setDisplayFormat(args[i].substring(2));
+                    String printerType = args[i].substring(2);
+                    switch (printerType) {
+                        case "f":
+                            mainInput.setPrinter(new FileWordItemPrinter());
+                            break;
+                        case "l":
+                            mainInput.setPrinter(new FileAndLineWorkItemPrinter());
+                            break;
+                        case "o":
+                            mainInput.setPrinter(new OccurrenceWordItemPrinter());
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Unknown printer type: " + printerType);
+                    }
                     break;
                 case "-f":
                     mainInput.setOutputFilePath(args[i].substring(2));

@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug WordTracker",
+            "request": "launch",
+            "mainClass": "appDomain.Main",
+            "args": "test3.txt -po -foutput.txt"
+        }
+    ]
+}

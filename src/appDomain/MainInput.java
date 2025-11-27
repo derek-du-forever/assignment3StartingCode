@@ -1,9 +1,11 @@
 package appDomain;
 
+import utilities.WordItemPrinter;
+
 public class MainInput {
     private String inputFilePath;
     private String outputFilePath;
-    private String displayFormat;
+    private WordItemPrinter printer;
 
     public String getInputFilePath() {
         return inputFilePath;
@@ -21,11 +23,12 @@ public class MainInput {
         this.outputFilePath = outputFilePath;
     }
 
-    public String getDisplayFormat() {
-        return displayFormat;
+    public WordItemPrinter getPrinter() {
+        return printer;
     }
 
-    public void setDisplayFormat(String displayFormat) {
-        this.displayFormat = displayFormat;
+    public void setPrinter(WordItemPrinter printer) {
+        this.printer = printer;
     }
+
 }

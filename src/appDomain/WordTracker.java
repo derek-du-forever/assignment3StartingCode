@@ -9,6 +9,7 @@ import java.util.List;
 import implementations.BSTree;
 import implementations.BSTreeNode;
 import utilities.FileHelper;
+import utilities.Iterator;
 
 public class WordTracker {
     private static final String REPOSITORY_FILE = "res/repository.ser";
@@ -18,6 +19,10 @@ public class WordTracker {
     public WordTracker() {
         this.wordTree = new BSTree<>();
         restoreWordTree();
+    }
+
+    public Iterator<WordItem> iterator() {
+        return wordTree.inorderIterator();
     }
 
     public void serializeWordTree() {
@@ -71,7 +76,7 @@ public class WordTracker {
             return new String[0];
         }
         line = line.replaceAll("['`]", "");
-        line = line.replaceAll("[^a-z0-9\\s-]+", " ");
+        line = line.replaceAll("[^a-zA-Z0-9\\s]+", " ");
 
         String[] tokens = line.trim().split("\\s+");
 
