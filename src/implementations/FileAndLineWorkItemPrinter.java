@@ -1,5 +1,9 @@
 package implementations;
 
+/**
+ * Implementation of WordItemPrinter that formats WordItem objects
+ * to display occurrences in files and line numbers.
+ */
 public class FileAndLineWorkItemPrinter implements utilities.WordItemPrinter {
     @Override
     public String format(appDomain.WordItem wordItem) {

@@ -5,6 +5,11 @@ import java.util.NoSuchElementException;
 import utilities.BSTreeADT;
 import utilities.Iterator;
 
+/**
+ * Implementation of a binary search tree (BST).
+ *
+ * @param <E> the type of element stored in the tree, must be comparable
+ */
 public class BSTree<E extends Comparable<? super E>> implements BSTreeADT<E> {
     private static final long serialVersionUID = 1L;
 

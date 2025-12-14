@@ -1,7 +1,6 @@
 package appDomain;
 
 import java.io.BufferedWriter;
-import java.io.Console;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,10 +9,14 @@ import java.util.List;
 import implementations.FileAndLineWorkItemPrinter;
 import implementations.FileWordItemPrinter;
 import implementations.OccurrenceWordItemPrinter;
-import utilities.FileHelper;
 import utilities.Iterator;
 import utilities.WordItemPrinter;
 
+/**
+ * Main class for the Word Tracker application.
+ * It processes command line arguments, tracks words in files,
+ * and outputs the results using specified formatting.
+ */
 public class Main {
     public static void main(String[] args) {
         WordTracker tracker = new WordTracker();

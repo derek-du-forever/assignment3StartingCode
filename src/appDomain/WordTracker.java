@@ -11,6 +11,10 @@ import implementations.BSTreeNode;
 import utilities.FileHelper;
 import utilities.Iterator;
 
+/**
+ * Class responsible for tracking words across multiple files
+ * using a binary search tree (BST) to store WordItem objects.
+ */
 public class WordTracker {
     private static final String REPOSITORY_FILE = "res/repository.ser";
 

@@ -2,6 +2,10 @@ package appDomain;
 
 import utilities.WordItemPrinter;
 
+/**
+ * Class representing the main input configuration,
+ * including input/output file paths and the printer to use.
+ */
 public class MainInput {
     private String inputFilePath;
     private String outputFilePath;

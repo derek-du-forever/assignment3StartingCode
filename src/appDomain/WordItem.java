@@ -3,6 +3,9 @@ package appDomain;
 import java.util.HashMap;
 import java.util.TreeSet;
 
+/**
+ * Class representing a word and its occurrences in files and line numbers.
+ */
 public class WordItem implements Comparable<WordItem>, java.io.Serializable {
     private static final long serialVersionUID = 1L;
     private String word;

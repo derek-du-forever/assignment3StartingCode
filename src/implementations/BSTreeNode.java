@@ -1,5 +1,10 @@
 package implementations;
 
+/**
+ * A node in a binary search tree (BST).
+ *
+ * @param <E> the type of element stored in the node
+ */
 public class BSTreeNode<E> implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
     E element;

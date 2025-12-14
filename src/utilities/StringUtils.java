@@ -1,6 +1,19 @@
 package utilities;
 
+/**
+ * Utility class providing common string manipulation helpers.
+ */
 public class StringUtils {
+
+    /**
+     * Pads the given string on the left with the specified character
+     * until it reaches the desired total length.
+     *
+     * @param s           the original string
+     * @param totalLength the target length after padding
+     * @param padChar     the character used for padding
+     * @return the left-padded string, or {@code null} if the input is {@code null}
+     */
     public static String padLeft(String s, int totalLength, char padChar) {
         if (s == null)
             return null;
@@ -16,6 +29,15 @@ public class StringUtils {
         return sb.toString();
     }
 
+    /**
+     * Pads the given string on the right with the specified character
+     * until it reaches the desired total length.
+     *
+     * @param s           the original string
+     * @param totalLength the target length after padding
+     * @param padChar     the character used for padding
+     * @return the right-padded string, or {@code null} if the input is {@code null}
+     */
     public static String padRight(String s, int totalLength, char padChar) {
         if (s == null)
             return null;
@@ -31,6 +53,13 @@ public class StringUtils {
         return sb.toString();
     }
 
+    /**
+     * Normalizes various Unicode dash characters into a standard ASCII hyphen
+     * ('-').
+     *
+     * @param input the input string
+     * @return the normalized string, or {@code null} if the input is {@code null}
+     */
     public static String normalizeDash(String input) {
         if (input == null)
             return null;
